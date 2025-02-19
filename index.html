@@ -1,19 +1,223 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>我的個人網站</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft JhengHei', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-bottom: 3rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 4rem;
+        }
+        
+        .grid-item {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        .grid-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        
+        .grid-item a {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+            height: 100%;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .grid-title {
+            font-size: 1.5rem;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .item-description {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .color-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            z-index: 1;
+        }
+        
+        #item1 .color-overlay { background-color: #3498db; }
+        #item2 .color-overlay { background-color: #e74c3c; }
+        #item3 .color-overlay { background-color: #2ecc71; }
+        #item4 .color-overlay { background-color: #f39c12; }
+        #item5 .color-overlay { background-color: #9b59b6; }
+        #item6 .color-overlay { background-color: #1abc9c; }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+        
+        /* 響應式設計 */
+        @media (max-width: 900px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+            
+            header {
+                padding: 1.5rem 0;
+                margin-bottom: 2rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>歡迎來到我的網站</h1>
+        <h1>我的個人網站</h1>
+        <div class="subtitle">歡迎來到我的數位空間</div>
     </header>
-    <main>
-        <p>這是我使用 GitHub Pages 建立的個人網站。</p>
-    </main>
+    
+    <div class="container">
+        <div class="grid-container">
+            <!-- 第一個方格 -->
+            <div class="grid-item" id="item1">
+                <div class="color-overlay"></div>
+                <a href="about.html">
+                    <div class="icon">👋</div>
+                    <div class="grid-title">關於我</div>
+                    <div class="item-description">了解我的背景和專業技能</div>
+                </a>
+            </div>
+            
+            <!-- 第二個方格 -->
+            <div class="grid-item" id="item2">
+                <div class="color-overlay"></div>
+                <a href="projects.html">
+                    <div class="icon">🚀</div>
+                    <div class="grid-title">作品集</div>
+                    <div class="item-description">瀏覽我的專案和創作</div>
+                </a>
+            </div>
+            
+            <!-- 第三個方格 -->
+            <div class="grid-item" id="item3">
+                <div class="color-overlay"></div>
+                <a href="blog.html">
+                    <div class="icon">✍️</div>
+                    <div class="grid-title">部落格</div>
+                    <div class="item-description">閱讀我的文章和想法</div>
+                </a>
+            </div>
+            
+            <!-- 第四個方格 -->
+            <div class="grid-item" id="item4">
+                <div class="color-overlay"></div>
+                <a href="resources.html">
+                    <div class="icon">📚</div>
+                    <div class="grid-title">資源分享</div>
+                    <div class="item-description">分享有用的工具和資源</div>
+                </a>
+            </div>
+            
+            <!-- 第五個方格 -->
+            <div class="grid-item" id="item5">
+                <div class="color-overlay"></div>
+                <a href="contact.html">
+                    <div class="icon">📬</div>
+                    <div class="grid-title">聯絡我</div>
+                    <div class="item-description">和我建立聯繫</div>
+                </a>
+            </div>
+            
+            <!-- 第六個方格 -->
+            <div class="grid-item" id="item6">
+                <div class="color-overlay"></div>
+                <a href="gallery.html">
+                    <div class="icon">🖼️</div>
+                    <div class="grid-title">相簿</div>
+                    <div class="item-description">瀏覽我的圖片和照片</div>
+                </a>
+            </div>
+        </div>
+    </div>
+    
     <footer>
-        <p>&copy; 2025 我的網站</p>
+        <p>&copy; 2025 我的個人網站 - 版權所有</p>
     </footer>
 </body>
 </html>
