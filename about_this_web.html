@@ -43,41 +43,78 @@
             padding: 0 20px;
         }
         
-        .about-section {
-            background-color: white;
-            border-radius: 10px;
-            padding: 40px;
+        .back-button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
             margin-bottom: 40px;
+        }
+        
+        .back-button:hover {
+            background-color: #2980b9;
+        }
+        
+        /* 資料夾風格設計 */
+        .folder {
+            margin-bottom: 30px;
+            border-radius: 10px;
+            overflow: hidden;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
         
-        .about-header {
+        .folder-tab {
+            background-color: #3498db;
+            color: white;
+            padding: 15px 25px;
+            font-size: 1.4rem;
+            font-weight: bold;
             display: flex;
             align-items: center;
-            margin-bottom: 30px;
-            border-bottom: 2px solid #f0f0f0;
-            padding-bottom: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            position: relative;
         }
         
-        .about-icon {
-            font-size: 2.5rem;
-            margin-right: 15px;
-            color: #3498db;
+        .folder-tab:hover {
+            background-color: #2980b9;
         }
         
-        .about-title {
+        .folder-icon {
             font-size: 1.8rem;
-            color: #2c3e50;
+            margin-right: 15px;
         }
         
-        .about-content {
-            font-size: 1.1rem;
-            color: #555;
-            line-height: 1.8;
+        .folder-arrow {
+            position: absolute;
+            right: 25px;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
         }
         
-        .about-content p {
-            margin-bottom: 20px;
+        .folder-content {
+            background-color: white;
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+        
+        .folder-inner {
+            padding: 30px;
+        }
+        
+        .folder.open .folder-content {
+            max-height: 2000px;
+            padding: 30px;
+        }
+        
+        .folder.open .folder-arrow {
+            transform: rotate(180deg);
         }
         
         .highlight {
@@ -90,7 +127,7 @@
         
         .journey-timeline {
             position: relative;
-            margin: 40px 0;
+            margin: 30px 0;
             padding-left: 30px;
         }
         
@@ -130,22 +167,6 @@
             margin-bottom: 10px;
         }
         
-        .back-button {
-            display: inline-block;
-            background-color: #3498db;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s;
-            margin-bottom: 40px;
-        }
-        
-        .back-button:hover {
-            background-color: #2980b9;
-        }
-        
         footer {
             background-color: #2c3e50;
             color: white;
@@ -156,26 +177,22 @@
         
         /* 響應式設計 */
         @media (max-width: 768px) {
-            .about-section {
-                padding: 25px;
+            .folder-tab {
+                padding: 12px 15px;
+                font-size: 1.2rem;
             }
             
-            .about-header {
-                flex-direction: column;
-                text-align: center;
+            .folder-icon {
+                font-size: 1.5rem;
+                margin-right: 10px;
             }
             
-            .about-icon {
-                margin-right: 0;
-                margin-bottom: 10px;
+            .folder-inner {
+                padding: 20px;
             }
             
-            .about-title {
-                font-size: 1.6rem;
-            }
-            
-            .about-content {
-                font-size: 1rem;
+            .folder.open .folder-content {
+                padding: 20px;
             }
         }
     </style>
@@ -189,87 +206,105 @@
     <div class="container">
         <a href="index.html" class="back-button">← 返回首頁</a>
         
-        <!-- 學習網站架設的動機 -->
-        <section class="about-section">
-            <div class="about-header">
-                <div class="about-icon">💡</div>
-                <h2 class="about-title">我為什麼想學習網站架設</h2>
+        <!-- 學習網站架設的動機 (資料夾風格) -->
+        <div class="folder" id="folder1">
+            <div class="folder-tab" onclick="toggleFolder('folder1')">
+                <span class="folder-icon">📁</span>
+                <span>我為什麼想學習網站架設</span>
+                <span class="folder-arrow">▼</span>
             </div>
-            
-            <div class="about-content">
-                <p>在這個數位化的時代，我深深被網站的無限可能性所吸引。網站不僅僅是資訊的載體，更是創意表達的平台。我想學習網站架設的原因有以下幾點：</p>
-                
-                <div class="journey-timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-title">數位展示的需求</div>
-                        <p>隨著數位內容的增加，我需要一個專屬的空間來展示我的作品和想法，而不是依賴第三方平台的限制。</p>
+            <div class="folder-content">
+                <div class="folder-inner">
+                    <p>在這個數位化的時代，我深深被網站的無限可能性所吸引。網站不僅僅是資訊的載體，更是創意表達的平台。我想學習網站架設的原因有以下幾點：</p>
+                    
+                    <div class="journey-timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-title">數位展示的需求</div>
+                            <p>隨著數位內容的增加，我需要一個專屬的空間來展示我的作品和想法，而不是依賴第三方平台的限制。</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-title">技能的擴展</div>
+                            <p>學習網站架設不僅能讓我掌握前端技術，也能培養邏輯思維和問題解決能力，這些都是現代社會中非常寶貴的能力。</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-title">創意實現</div>
+                            <p>透過掌握HTML、CSS和JavaScript，我可以將腦海中的創意構想變成可視化的作品，不再受限於現有模板。</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-title">自我挑戰</div>
+                            <p>每次解決一個編程問題或設計出一個美觀的頁面，都給我帶來極大的成就感，這種持續學習的過程非常令人著迷。</p>
+                        </div>
                     </div>
                     
-                    <div class="timeline-item">
-                        <div class="timeline-title">技能的擴展</div>
-                        <p>學習網站架設不僅能讓我掌握前端技術，也能培養邏輯思維和問題解決能力，這些都是現代社會中非常寶貴的能力。</p>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-title">創意實現</div>
-                        <p>透過掌握HTML、CSS和JavaScript，我可以將腦海中的創意構想變成可視化的作品，不再受限於現有模板。</p>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-title">自我挑戰</div>
-                        <p>每次解決一個編程問題或設計出一個美觀的頁面，都給我帶來極大的成就感，這種持續學習的過程非常令人著迷。</p>
+                    <div class="highlight">
+                        「網頁設計對我而言不只是一門技術，更是藝術和邏輯的結合。能夠用程式碼繪製出美麗的數位世界，這種感覺難以言喻。」
                     </div>
                 </div>
-                
-                <div class="highlight">
-                    「網頁設計對我而言不只是一門技術，更是藝術和邏輯的結合。能夠用程式碼繪製出美麗的數位世界，這種感覺難以言喻。」
-                </div>
             </div>
-        </section>
+        </div>
         
-        <!-- 網站的由來 -->
-        <section class="about-section">
-            <div class="about-header">
-                <div class="about-icon">🌱</div>
-                <h2 class="about-title">這個網站的由來</h2>
+        <!-- 網站的由來 (資料夾風格) -->
+        <div class="folder" id="folder2">
+            <div class="folder-tab" onclick="toggleFolder('folder2')">
+                <span class="folder-icon">📁</span>
+                <span>這個網站的由來</span>
+                <span class="folder-arrow">▼</span>
             </div>
-            
-            <div class="about-content">
-                <p>這個網站誕生於我學習Web開發的旅程中，它不僅是我的作品集，更記錄了我的成長過程。</p>
-                
-                <div class="journey-timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-title">構思階段</div>
-                        <p>初期我花了大量時間研究各種網站設計，尋找靈感並構思如何打造一個既美觀又實用的個人網站。我想要一個簡潔但不失個人特色的設計。</p>
+            <div class="folder-content">
+                <div class="folder-inner">
+                    <p>這個網站誕生於我學習Web開發的旅程中，它不僅是我的作品集，更記錄了我的成長過程。</p>
+                    
+                    <div class="journey-timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-title">構思階段</div>
+                            <p>初期我花了大量時間研究各種網站設計，尋找靈感並構思如何打造一個既美觀又實用的個人網站。我想要一個簡潔但不失個人特色的設計。</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-title">學習過程</div>
+                            <p>從零開始學習HTML和CSS，通過各種在線課程和教程，一步步掌握前端技術。每解決一個問題，都讓我更加熱愛這個過程。</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-title">原型設計</div>
+                            <p>在確定網站的核心功能後，我開始設計網站的原型。經過多次修改，最終形成了現在這個簡潔而實用的網格布局設計。</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-title">不斷完善</div>
+                            <p>這個網站並非一蹴而就，而是在持續更新和完善中。每次學習新技術，我都會嘗試應用到網站中，讓它與我一同成長。</p>
+                        </div>
                     </div>
                     
-                    <div class="timeline-item">
-                        <div class="timeline-title">學習過程</div>
-                        <p>從零開始學習HTML和CSS，通過各種在線課程和教程，一步步掌握前端技術。每解決一個問題，都讓我更加熱愛這個過程。</p>
-                    </div>
+                    <p>這個網站不僅僅是我展示作品的平台，更是我學習歷程的見證。每一行代碼、每一個頁面，都承載著我對Web開發的熱情和努力。它會隨著我的技術提升而不斷進化，成為我數位生活的重要組成部分。</p>
                     
-                    <div class="timeline-item">
-                        <div class="timeline-title">原型設計</div>
-                        <p>在確定網站的核心功能後，我開始設計網站的原型。經過多次修改，最終形成了現在這個簡潔而實用的網格布局設計。</p>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-title">不斷完善</div>
-                        <p>這個網站並非一蹴而就，而是在持續更新和完善中。每次學習新技術，我都會嘗試應用到網站中，讓它與我一同成長。</p>
+                    <div class="highlight">
+                        「這個網站就像是我的數位花園，需要不斷澆灌和修剪。它記錄著我的成長，也見證著我在數位世界中的足跡。」
                     </div>
                 </div>
-                
-                <p>這個網站不僅僅是我展示作品的平台，更是我學習歷程的見證。每一行代碼、每一個頁面，都承載著我對Web開發的熱情和努力。它會隨著我的技術提升而不斷進化，成為我數位生活的重要組成部分。</p>
-                
-                <div class="highlight">
-                    「這個網站就像是我的數位花園，需要不斷澆灌和修剪。它記錄著我的成長，也見證著我在數位世界中的足跡。」
-                </div>
             </div>
-        </section>
+        </div>
     </div>
     
     <footer>
         <p>&copy; 2025 我的個人網站 - 版權所有</p>
     </footer>
+
+    <script>
+        // 資料夾展開/收起功能
+        function toggleFolder(id) {
+            const folder = document.getElementById(id);
+            folder.classList.toggle('open');
+        }
+        
+        // 頁面載入時自動打開第一個資料夾（可選）
+        document.addEventListener('DOMContentLoaded', function() {
+            // 取消下面的註釋可以讓第一個資料夾自動打開
+            // document.getElementById('folder1').classList.add('open');
+        });
+    </script>
 </body>
 </html>
