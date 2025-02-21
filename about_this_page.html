@@ -21,236 +21,129 @@
         header {
             background-color: #2c3e50;
             color: white;
-            padding: 1.5rem 0;
+            text-align: center;
+            padding: 2rem 0;
+            margin-bottom: 3rem;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
         }
         
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 1.5rem;
-        }
-        
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            transition: opacity 0.3s;
-            padding: 5px 10px;
-            border-radius: 4px;
-        }
-        
-        nav ul li a:hover {
+        .subtitle {
+            font-size: 1.2rem;
             opacity: 0.8;
-            background-color: rgba(255, 255, 255, 0.1);
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 40px 20px;
-        }
-        
-        .page-title {
-            text-align: center;
-            margin-bottom: 2rem;
-            color: #2c3e50;
-            position: relative;
-            padding-bottom: 15px;
-        }
-        
-        .page-title:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background-color: #3498db;
+            padding: 0 20px;
         }
         
         .about-section {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 40px;
-            margin-bottom: 50px;
             background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: 10px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
         
-        .profile-img {
-            width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        .about-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 15px;
         }
         
-        .bio h2 {
-            margin-bottom: 1rem;
-            color: #2c3e50;
-        }
-        
-        .bio p {
-            margin-bottom: 1rem;
-            text-align: justify;
-        }
-        
-        .skills-section {
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            margin-bottom: 50px;
-        }
-        
-        .skills-section h2 {
-            color: #2c3e50;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-        
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 25px;
-        }
-        
-        .skill-item {
-            text-align: center;
-            padding: 20px;
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .skill-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-        }
-        
-        .skill-icon {
+        .about-icon {
             font-size: 2.5rem;
-            margin-bottom: 15px;
+            margin-right: 15px;
             color: #3498db;
         }
         
-        .skill-name {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        
-        .skill-level {
-            width: 100%;
-            height: 6px;
-            background-color: #e0e0e0;
-            border-radius: 3px;
-            margin-top: 10px;
-            overflow: hidden;
-        }
-        
-        .skill-progress {
-            height: 100%;
-            background-color: #3498db;
-            border-radius: 3px;
-        }
-        
-        .experience-section {
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            margin-bottom: 40px;
-        }
-        
-        .experience-section h2 {
+        .about-title {
+            font-size: 1.8rem;
             color: #2c3e50;
-            margin-bottom: 1.5rem;
-            text-align: center;
         }
         
-        .timeline {
+        .about-content {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        .about-content p {
+            margin-bottom: 20px;
+        }
+        
+        .highlight {
+            background-color: #f9f9f9;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 25px 0;
+            font-style: italic;
+        }
+        
+        .journey-timeline {
             position: relative;
+            margin: 40px 0;
             padding-left: 30px;
         }
         
-        .timeline:before {
+        .journey-timeline::before {
             content: '';
             position: absolute;
             left: 0;
-            top: 5px;
-            width: 3px;
-            height: calc(100% - 10px);
-            background-color: #e0e0e0;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background-color: #3498db;
+            border-radius: 4px;
         }
         
         .timeline-item {
             position: relative;
             margin-bottom: 30px;
-            padding-bottom: 20px;
         }
         
-        .timeline-item:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-        
-        .timeline-date {
+        .timeline-item::before {
+            content: '';
             position: absolute;
-            left: -42px;
-            width: 25px;
-            height: 25px;
+            left: -34px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
             background-color: #3498db;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 12px;
-            z-index: 2;
-        }
-        
-        .timeline-content {
-            background-color: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border: 4px solid white;
+            box-shadow: 0 0 0 2px #3498db;
         }
         
         .timeline-title {
-            display: flex;
-            justify-content: space-between;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #2c3e50;
             margin-bottom: 10px;
         }
         
-        .timeline-position {
+        .back-button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
             font-weight: bold;
-            color: #2c3e50;
+            transition: background-color 0.3s;
+            margin-bottom: 40px;
         }
         
-        .timeline-company {
-            color: #3498db;
-        }
-        
-        .timeline-description {
-            text-align: justify;
+        .back-button:hover {
+            background-color: #2980b9;
         }
         
         footer {
@@ -261,211 +154,118 @@
             margin-top: 2rem;
         }
         
-        .back-to-home {
-            display: inline-block;
-            margin-top: 40px;
-            background-color: #3498db;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-            text-align: center;
-        }
-        
-        .back-to-home:hover {
-            background-color: #2980b9;
-        }
-        
-        @media (max-width: 900px) {
+        /* 響應式設計 */
+        @media (max-width: 768px) {
             .about-section {
-                grid-template-columns: 1fr;
+                padding: 25px;
             }
             
-            .profile-container {
-                max-width: 400px;
-                margin: 0 auto 30px;
-            }
-            
-            .skills-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .nav-menu {
-                display: none;
-            }
-        }
-        
-        @media (max-width: 600px) {
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .timeline-title {
+            .about-header {
                 flex-direction: column;
+                text-align: center;
+            }
+            
+            .about-icon {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            
+            .about-title {
+                font-size: 1.6rem;
+            }
+            
+            .about-content {
+                font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="header-container">
-            <div class="logo">我的個人網站</div>
-            <nav class="nav-menu">
-                <ul>
-                    <li><a href="index.html">首頁</a></li>
-                    <li><a href="about.html">關於我</a></li>
-                    <li><a href="projects.html">作品集</a></li>
-                    <li><a href="blog.html">部落格</a></li>
-                    <li><a href="resources.html">資源</a></li>
-                    <li><a href="contact.html">聯絡我</a></li>
-                    <li><a href="gallery.html">相簿</a></li>
-                </ul>
-            </nav>
-        </div>
+        <h1>關於我</h1>
+        <div class="subtitle">了解我的背景和網站的由來</div>
     </header>
     
     <div class="container">
-        <h1 class="page-title">關於我</h1>
+        <a href="index.html" class="back-button">← 返回首頁</a>
         
+        <!-- 學習網站架設的動機 -->
         <section class="about-section">
-            <div class="profile-container">
-                <img src="/api/placeholder/400/400" alt="我的照片" class="profile-img">
+            <div class="about-header">
+                <div class="about-icon">💡</div>
+                <h2 class="about-title">我為什麼想學習網站架設</h2>
             </div>
-            <div class="bio">
-                <h2>您好，我是王小明</h2>
-                <p>我是一位熱愛創作和學習的網頁開發者，擁有超過五年的前端開發經驗。我專注於創建直觀、高效且具有視覺吸引力的網站和應用程式。</p>
-                <p>我的目標是將複雜的技術問題轉化為簡單、優雅的解決方案。我相信好的設計不僅僅是美觀，更是能夠解決實際問題和提升使用者體驗的關鍵。</p>
-                <p>除了專業工作外，我也熱衷於攝影、閱讀和遠足。這些興趣幫助我保持創意思維，並為我的設計工作帶來新的靈感。</p>
-                <p>我畢業於台灣大學資訊工程學系，並持續通過線上課程和參與技術社群來提升自己的專業技能。我相信終身學習是保持競爭力和創新能力的關鍵。</p>
-            </div>
-        </section>
-        
-        <section class="skills-section">
-            <h2>專業技能</h2>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <div class="skill-icon">📱</div>
-                    <div class="skill-name">響應式設計</div>
-                    <div class="skill-description">創建在各種裝置上都能良好運行的網站</div>
-                    <div class="skill-level">
-                        <div class="skill-progress" style="width: 95%"></div>
+            
+            <div class="about-content">
+                <p>在這個數位化的時代，我深深被網站的無限可能性所吸引。網站不僅僅是資訊的載體，更是創意表達的平台。我想學習網站架設的原因有以下幾點：</p>
+                
+                <div class="journey-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-title">數位展示的需求</div>
+                        <p>隨著數位內容的增加，我需要一個專屬的空間來展示我的作品和想法，而不是依賴第三方平台的限制。</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-title">技能的擴展</div>
+                        <p>學習網站架設不僅能讓我掌握前端技術，也能培養邏輯思維和問題解決能力，這些都是現代社會中非常寶貴的能力。</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-title">創意實現</div>
+                        <p>透過掌握HTML、CSS和JavaScript，我可以將腦海中的創意構想變成可視化的作品，不再受限於現有模板。</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-title">自我挑戰</div>
+                        <p>每次解決一個編程問題或設計出一個美觀的頁面，都給我帶來極大的成就感，這種持續學習的過程非常令人著迷。</p>
                     </div>
                 </div>
                 
-                <div class="skill-item">
-                    <div class="skill-icon">🎨</div>
-                    <div class="skill-name">UI/UX 設計</div>
-                    <div class="skill-description">創建美觀且用戶友好的界面</div>
-                    <div class="skill-level">
-                        <div class="skill-progress" style="width: 85%"></div>
-                    </div>
-                </div>
-                
-                <div class="skill-item">
-                    <div class="skill-icon">💻</div>
-                    <div class="skill-name">前端開發</div>
-                    <div class="skill-description">HTML, CSS, JavaScript, React</div>
-                    <div class="skill-level">
-                        <div class="skill-progress" style="width: 90%"></div>
-                    </div>
-                </div>
-                
-                <div class="skill-item">
-                    <div class="skill-icon">🔧</div>
-                    <div class="skill-name">後端開發</div>
-                    <div class="skill-description">Node.js, Express, MongoDB</div>
-                    <div class="skill-level">
-                        <div class="skill-progress" style="width: 75%"></div>
-                    </div>
-                </div>
-                
-                <div class="skill-item">
-                    <div class="skill-icon">🚀</div>
-                    <div class="skill-name">效能優化</div>
-                    <div class="skill-description">提升網站載入速度和運行效率</div>
-                    <div class="skill-level">
-                        <div class="skill-progress" style="width: 80%"></div>
-                    </div>
-                </div>
-                
-                <div class="skill-item">
-                    <div class="skill-icon">🔍</div>
-                    <div class="skill-name">SEO 優化</div>
-                    <div class="skill-description">提高網站在搜尋引擎的排名</div>
-                    <div class="skill-level">
-                        <div class="skill-progress" style="width: 85%"></div>
-                    </div>
-                </div>
-                
-                <div class="skill-item">
-                    <div class="skill-icon">📊</div>
-                    <div class="skill-name">數據分析</div>
-                    <div class="skill-description">理解用戶行為和優化轉換率</div>
-                    <div class="skill-level">
-                        <div class="skill-progress" style="width: 70%"></div>
-                    </div>
-                </div>
-                
-                <div class="skill-item">
-                    <div class="skill-icon">🔄</div>
-                    <div class="skill-name">版本控制</div>
-                    <div class="skill-description">Git, GitHub, 協作開發</div>
-                    <div class="skill-level">
-                        <div class="skill-progress" style="width: 90%"></div>
-                    </div>
+                <div class="highlight">
+                    「網頁設計對我而言不只是一門技術，更是藝術和邏輯的結合。能夠用程式碼繪製出美麗的數位世界，這種感覺難以言喻。」
                 </div>
             </div>
         </section>
         
-        <section class="experience-section">
-            <h2>工作經歷</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-date">現在</div>
-                    <div class="timeline-content">
-                        <div class="timeline-title">
-                            <div class="timeline-position">資深前端開發工程師</div>
-                            <div class="timeline-company">創新科技有限公司</div>
-                        </div>
-                        <div class="timeline-period">2022年 - 至今</div>
-                        <div class="timeline-description">
-                            <p>領導前端開發團隊，設計並實現複雜的使用者界面。優化網站性能，提高用戶留存率23%。導入現代前端框架，提升開發效率。</p>
-                        </div>
+        <!-- 網站的由來 -->
+        <section class="about-section">
+            <div class="about-header">
+                <div class="about-icon">🌱</div>
+                <h2 class="about-title">這個網站的由來</h2>
+            </div>
+            
+            <div class="about-content">
+                <p>這個網站誕生於我學習Web開發的旅程中，它不僅是我的作品集，更記錄了我的成長過程。</p>
+                
+                <div class="journey-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-title">構思階段</div>
+                        <p>初期我花了大量時間研究各種網站設計，尋找靈感並構思如何打造一個既美觀又實用的個人網站。我想要一個簡潔但不失個人特色的設計。</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-title">學習過程</div>
+                        <p>從零開始學習HTML和CSS，通過各種在線課程和教程，一步步掌握前端技術。每解決一個問題，都讓我更加熱愛這個過程。</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-title">原型設計</div>
+                        <p>在確定網站的核心功能後，我開始設計網站的原型。經過多次修改，最終形成了現在這個簡潔而實用的網格布局設計。</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-title">不斷完善</div>
+                        <p>這個網站並非一蹴而就，而是在持續更新和完善中。每次學習新技術，我都會嘗試應用到網站中，讓它與我一同成長。</p>
                     </div>
                 </div>
                 
-                <div class="timeline-item">
-                    <div class="timeline-date"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-title">
-                            <div class="timeline-position">網頁開發工程師</div>
-                            <div class="timeline-company">數碼網路公司</div>
-                        </div>
-                        <div class="timeline-period">2019年 - 2022年</div>
-                        <div class="timeline-description">
-                            <p>負責公司主要產品的前端開發和維護。實現響應式設計，確保良好的跨瀏覽器兼容性。與設計師和後端工程師密切合作，提供高質量的用戶體驗。</p>
-                        </div>
-                    </div>
-                </div>
+                <p>這個網站不僅僅是我展示作品的平台，更是我學習歷程的見證。每一行代碼、每一個頁面，都承載著我對Web開發的熱情和努力。它會隨著我的技術提升而不斷進化，成為我數位生活的重要組成部分。</p>
                 
-                <div class="timeline-item">
-                    <div class="timeline-date"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-title">
-                            <div class="timeline-position">初級開發者</div>
-                            <div class="timeline-company">前瞻科技公司</div>
-                        </div>
-                        <div class="timeline-period">2017年 - 2019年</div>
-                        <div class="timeline-description">
-                            <p>參與多個網頁開發項目，學習前端技術。協助實現用戶界面設計，修復BUG並優化代碼。通過實踐項目快速提升技術能力。</p>
-                        </div>
-                    </div>
+                <div class="highlight">
+                    「這個網站就像是我的數位花園，需要不斷澆灌和修剪。它記錄著我的成長，也見證著我在數位世界中的足跡。」
                 </div>
             </div>
         </section>
-        
-        <a href="index.html" class="back-to-home">返回首頁</a>
     </div>
     
     <footer>
