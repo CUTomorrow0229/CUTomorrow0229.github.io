@@ -96,10 +96,35 @@
             margin: 10px auto;
         }
         
+        /* 修改為橫向滾動容器 */
         .course-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            display: flex;
+            overflow-x: auto;
+            padding: 10px 5px 30px 5px;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: #3498db #f0f0f0;
             gap: 25px;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        /* 自定義滾動條樣式 */
+        .course-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .course-container::-webkit-scrollbar-track {
+            background: #f0f0f0;
+            border-radius: 10px;
+        }
+        
+        .course-container::-webkit-scrollbar-thumb {
+            background: #3498db;
+            border-radius: 10px;
+        }
+        
+        .course-container::-webkit-scrollbar-thumb:hover {
+            background: #2980b9;
         }
         
         .course-card {
@@ -108,6 +133,9 @@
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             transition: transform 0.3s, box-shadow 0.3s;
+            min-width: 350px;
+            max-width: 350px;
+            flex: 0 0 auto;
         }
         
         .course-card:hover {
@@ -148,6 +176,35 @@
             line-height: 1.8;
         }
         
+        /* 滾動箭頭控制 */
+        .scroll-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .scroll-button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: background-color 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .scroll-button:hover {
+            background-color: #2980b9;
+        }
+        
         .back-to-home {
             display: block;
             text-align: center;
@@ -174,10 +231,6 @@
         }
         
         @media (max-width: 768px) {
-            .course-container {
-                grid-template-columns: 1fr;
-            }
-            
             .nav-buttons {
                 flex-direction: column;
                 align-items: center;
@@ -185,6 +238,10 @@
             
             .nav-button {
                 width: 80%;
+            }
+            
+            .course-card {
+                min-width: 300px;
             }
         }
     </style>
@@ -205,7 +262,7 @@
         <!-- 必修課程 -->
         <div id="required" class="section active">
             <h2 class="section-header">必修課程</h2>
-            <div class="course-container">
+            <div class="course-container" id="required-container">
                 <!-- 課程1 -->
                 <div class="course-card required">
                     <div class="course-header">必修課程</div>
@@ -241,13 +298,53 @@
                         </p>
                     </div>
                 </div>
+                
+                <!-- 新增課程4 -->
+                <div class="course-card required">
+                    <div class="course-header">必修課程</div>
+                    <div class="course-content">
+                        <h3 class="course-title">離散數學</h3>
+                        <div class="course-date">2022年秋季學期</div>
+                        <p class="course-reflection">
+                            離散數學為我的理論基礎打下了堅實的基礎。從邏輯推理到集合理論，從組合數學到圖論，每個主題都與計算機科學密切相關。最大收穫是理解數學思維如何應用於解決實際的計算問題。透過課堂練習和小組作業，我培養了抽象思考和系統分析的能力，這對後續的演算法學習非常有幫助。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 新增課程5 -->
+                <div class="course-card required">
+                    <div class="course-header">必修課程</div>
+                    <div class="course-content">
+                        <h3 class="course-title">作業系統</h3>
+                        <div class="course-date">2023年冬季學期</div>
+                        <p class="course-reflection">
+                            作業系統課程讓我了解計算機底層運作機制。從處理程序管理、記憶體分配到檔案系統，每個主題都十分深入且富有挑戰性。最大收穫是實作一個簡易的排程系統，親身體驗效能優化與資源管理的平衡。這門課不僅增強我的系統設計思維，也讓我對日常使用的科技有更深入的理解。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 新增課程6 -->
+                <div class="course-card required">
+                    <div class="course-header">必修課程</div>
+                    <div class="course-content">
+                        <h3 class="course-title">計算機組織</h3>
+                        <div class="course-date">2022年冬季學期</div>
+                        <p class="course-reflection">
+                            計算機組織讓我理解了硬體與軟體之間的橋樑。從邏輯閘到指令集架構，從CPU設計到記憶體階層，每個主題都揭示了計算機內部運作的奧秘。最大挑戰是設計簡易的MIPS處理器，這讓我真正理解了指令如何在硬體層面被執行。這門課程讓我對電腦不再只是黑盒子，而是能理解其內部運作機制。
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-controls">
+                <button class="scroll-button" onclick="scrollCourses('required-container', 'left')">◀</button>
+                <button class="scroll-button" onclick="scrollCourses('required-container', 'right')">▶</button>
             </div>
         </div>
         
         <!-- 選修課程 -->
         <div id="elective" class="section">
             <h2 class="section-header">選修課程</h2>
-            <div class="course-container">
+            <div class="course-container" id="elective-container">
                 <!-- 課程1 -->
                 <div class="course-card elective">
                     <div class="course-header">選修課程</div>
@@ -283,13 +380,53 @@
                         </p>
                     </div>
                 </div>
+                
+                <!-- 新增課程4 -->
+                <div class="course-card elective">
+                    <div class="course-header">選修課程</div>
+                    <div class="course-content">
+                        <h3 class="course-title">資料庫系統</h3>
+                        <div class="course-date">2023年春季學期</div>
+                        <p class="course-reflection">
+                            資料庫系統課程讓我理解了數據管理的重要性。從關聯式模型到SQL查詢優化，從交易處理到資料庫正規化，每個主題都與現代應用開發密切相關。最大收穫是設計並實作一個小型圖書管理系統，從需求分析到實際部署，體驗了完整的資料庫開發流程。這門課程讓我具備了處理大型數據集的能力。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 新增課程5 -->
+                <div class="course-card elective">
+                    <div class="course-header">選修課程</div>
+                    <div class="course-content">
+                        <h3 class="course-title">雲端運算</h3>
+                        <div class="course-date">2024年春季學期</div>
+                        <p class="course-reflection">
+                            雲端運算課程帶我探索現代IT基礎設施的發展方向。從虛擬化技術到容器部署，從分散式儲存到微服務架構，每個概念都極具前瞻性。最大挑戰是團隊專案，我們在AWS上構建並部署了一個可擴展的網路應用。這過程中學習配置負載平衡、自動擴展和資料持久化，讓我對現代應用架構有了深入認識。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 新增課程6 -->
+                <div class="course-card elective">
+                    <div class="course-header">選修課程</div>
+                    <div class="course-content">
+                        <h3 class="course-title">電腦圖學</h3>
+                        <div class="course-date">2023年冬季學期</div>
+                        <p class="course-reflection">
+                            電腦圖學課程結合了藝術與科技的精髓。從基本繪圖演算法到3D模型渲染，從光線追蹤到著色技術，每個主題都充滿挑戰與樂趣。最有成就感的是實作一個簡易的3D場景渲染器，能夠處理光影效果和材質映射。這門課程不僅加深了我對數學和物理的應用理解，也培養了我的空間思維能力。
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-controls">
+                <button class="scroll-button" onclick="scrollCourses('elective-container', 'left')">◀</button>
+                <button class="scroll-button" onclick="scrollCourses('elective-container', 'right')">▶</button>
             </div>
         </div>
         
         <!-- 其他學習 -->
         <div id="other" class="section">
             <h2 class="section-header">其他學習</h2>
-            <div class="course-container">
+            <div class="course-container" id="other-container">
                 <!-- 課程1 -->
                 <div class="course-card other">
                     <div class="course-header">其他學習</div>
@@ -325,6 +462,46 @@
                         </p>
                     </div>
                 </div>
+                
+                <!-- 新增課程4 -->
+                <div class="course-card other">
+                    <div class="course-header">其他學習</div>
+                    <div class="course-content">
+                        <h3 class="course-title">開源項目貢獻：Linux內核</h3>
+                        <div class="course-date">2023年3月至今</div>
+                        <p class="course-reflection">
+                            參與開源社區是我技術成長最快的經歷。從修復小錯誤開始，逐漸理解Linux內核的複雜結構，每次提交都需要嚴格的代碼審查。最大收穫是學習到專業級的代碼標準和團隊協作流程。與來自全球的開發者交流不僅提升了我的技術能力，也拓展了國際視野，讓我了解到軟體開發的真實生態環境。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 新增課程5 -->
+                <div class="course-card other">
+                    <div class="course-header">其他學習</div>
+                    <div class="course-content">
+                        <h3 class="course-title">實驗室研究：自然語言處理</h3>
+                        <div class="course-date">2024年2月至今</div>
+                        <p class="course-reflection">
+                            加入NLP研究實驗室讓我體驗了學術研究的嚴謹與創新。從文獻閱讀到實驗設計，從模型訓練到結果分析，每個環節都充滿挑戰。目前參與的情感分析研究項目，讓我深入理解了Transformer架構和注意力機制。與教授和學長姐的討論開闊了我的思維，也讓我明確了未來想專注的研究方向。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 新增課程6 -->
+                <div class="course-card other">
+                    <div class="course-header">其他學習</div>
+                    <div class="course-content">
+                        <h3 class="course-title">競賽：ACM程式設計</h3>
+                        <div class="course-date">2023年5月</div>
+                        <p class="course-reflection">
+                            參加ACM程式設計競賽是極具挑戰性的經歷。與隊友每週刷題、討論演算法，從基本的搜尋排序到複雜的動態規劃和圖論，每類問題都需要深入理解和大量練習。比賽環境下的時間壓力培養了我快速思考和解決問題的能力。雖然未能獲得理想名次，但這段經歷大幅提升了我的演算法思維和代碼實作能力。
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-controls">
+                <button class="scroll-button" onclick="scrollCourses('other-container', 'left')">◀</button>
+                <button class="scroll-button" onclick="scrollCourses('other-container', 'right')">▶</button>
             </div>
         </div>
         
@@ -358,6 +535,37 @@
                 )
             ).classList.add('active');
         }
-    </script>
-</body>
-</html>
+        
+        // 橫向滾動函數
+        function scrollCourses(containerId, direction) {
+            const container = document.getElementById(containerId);
+            const cardWidth = 375; // 卡片寬度 + 間距
+            
+            if (direction === 'left') {
+                container.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+            } else {
+                container.scrollBy({ left: cardWidth, behavior: 'smooth' });
+            }
+        }
+        
+        // 添加鍵盤左右鍵滾動支持
+        document.addEventListener('keydown', function(e) {
+            const activeSection = document.querySelector('.section.active');
+            const containerId = activeSection.querySelector('.course-container').id;
+            
+            if (e.key === 'ArrowLeft') {
+                scrollCourses(containerId, 'left');
+            } else if (e.key === 'ArrowRight') {
+                scrollCourses(containerId, 'right');
+            }
+        });
+        
+        // 添加觸控滑動支持
+        document.querySelectorAll('.course-container').forEach(container => {
+            let startX;
+            let scrollLeft;
+            
+            container.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].pageX - container.offsetLeft;
+                scrollLeft = container.scrollLeft;
+            }, { passive: true });
