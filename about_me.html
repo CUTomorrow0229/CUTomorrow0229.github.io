@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>關於我 - 我的個人網站</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft JhengHei', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-bottom: 3rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #2c3e50;
+        }
+        
+        .tab {
+            padding: 12px 24px;
+            background-color: #e8e8e8;
+            border-radius: 8px 8px 0 0;
+            margin-right: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        
+        .tab.active {
+            background-color: #2c3e50;
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .profile-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .profile-image {
+            flex: 0 0 250px;
+            height: 250px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .profile-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .profile-name {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            border-bottom: 2px solid #e74c3c;
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+        
+        .info-list {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        
+        .info-list li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .info-icon {
+            margin-right: 15px;
+            min-width: 25px;
+            text-align: center;
+        }
+        
+        .info-label {
+            font-weight: bold;
+            margin-right: 8px;
+            min-width: 80px;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            margin: 30px 0 15px;
+            color: #2c3e50;
+            border-left: 4px solid #3498db;
+            padding-left: 10px;
+        }
+        
+        .skill-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .skill-tag {
+            background-color: #3498db;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: #2c3e50;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            background-color: inherit;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 4px solid #e74c3c;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::after {
+            right: -14px;
+        }
+        
+        .right::after {
+            left: -14px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: #e74c3c;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-title {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            color: #2c3e50;
+        }
+        
+        .timeline-description {
+            color: #666;
+        }
+        
+        .contact-button {
+            display: inline-block;
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin-top: 15px;
+        }
+        
+        .contact-button:hover {
+            background-color: #c0392b;
+        }
+        
+        .achievement-box {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .achievement-title {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+        
+        /* 回到首頁按鈕 */
+        .home-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: #2c3e50;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .home-button:hover {
+            background-color: #1a252f;
+            transform: scale(1.1);
+        }
+        
+        /* 響應式設計 */
+        @media (max-width: 900px) {
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 17px;
+            }
+            
+            .left::after, .right::after {
+                left: 17px;
+            }
+            
+            .right {
+                left: 0%;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            header {
+                padding: 1.5rem 0;
+                margin-bottom: 2rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .tab {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+            
+            .profile-image {
+                flex: 0 0 100%;
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>關於我</h1>
+        <div class="subtitle">認識我的人生故事</div>
+    </header>
+    
+    <div class="container">
+        <!-- 分頁標籤 -->
+        <div class="tabs">
+            <div class="tab active" onclick="openTab('basic-info')">基本資料</div>
+            <div class="tab" onclick="openTab('education')">求學歷程</div>
+        </div>
+        
+        <!-- 基本資料分頁 -->
+        <div id="basic-info" class="tab-content active">
+            <div class="profile-container">
+                <div class="profile-image">
+                    <!-- 可替換為您的照片 -->
+                    <div style="font-size: 5rem;">👤</div>
+                </div>
+                <div class="profile-info">
+                    <h2 class="profile-name">王小明</h2>
+                    <ul class="info-list">
+                        <li>
+                            <span class="info-icon">🎂</span>
+                            <span class="info-label">年齡:</span>
+                            <span>28歲</span>
+                        </li>
+                        <li>
+                            <span class="info-icon">📍</span>
+                            <span class="info-label">所在地:</span>
+                            <span>台北市</span>
+                        </li>
+                        <li>
+                            <span class="info-icon">👨‍💻</span>
+                            <span class="info-label">職業:</span>
+                            <span>網頁開發工程師</span>
+                        </li>
+                        <li>
+                            <span class="info-icon">📧</span>
+                            <span class="info-label">Email:</span>
+                            <span>example@email.com</span>
+                        </li>
+                    </ul>
+                    <a href="contact.html" class="contact-button">與我聯繫</a>
+                </div>
+            </div>
+            
+            <h3 class="section-title">關於我的故事</h3>
+            <p>
+                大家好，我是王小明，一位充滿熱情的網頁開發工程師。從小我就對科技和創造力充滿著濃厚的興趣，喜歡解決問題並將想法付諸實現。
+                在大學時期，我主修資訊工程，並參與了多個專案開發，這些經驗讓我更加堅定了在技術領域發展的決心。
+            </p>
+            <p>
+                畢業後，我加入了一家科技新創公司，負責前端開發工作。在工作之餘，我也持續自學新技術，並參與開源社群，希望能夠不斷精進自己的技能。
+                我相信終身學習的重要性，也熱衷於分享知識與經驗，這也是我建立這個個人網站的初衷。
+            </p>
+            
+            <h3 class="section-title">專業技能</h3>
+            <div class="skill-container">
+                <div class="skill-tag">HTML5</div>
+                <div class="skill-tag">CSS3</div>
+                <div class="skill-tag">JavaScript</div>
+                <div class="skill-tag">React</div>
+                <div class="skill-tag">Vue.js</div>
+                <div class="skill-tag">Node.js</div>
+                <div class="skill-tag">MongoDB</div>
+                <div class="skill-tag">Git</div>
+                <div class="skill-tag">UI/UX設計</div>
+                <div class="skill-tag">響應式設計</div>
+            </div>
+            
+            <h3 class="section-title">個人興趣</h3>
+            <p>
+                除了沉浸在程式碼的世界外，我還喜歡攝影、閱讀和旅行。透過相機捕捉美麗的瞬間，翻閱書籍開拓視野，
+                以及探索不同的文化和地方，這些都是我平衡工作與生活的方式。我也是一位咖啡愛好者，週末常常探索不同的咖啡廳，
+                享受一杯好咖啡的同時構思新的專案創意。
+            </p>
+            
+            <h3 class="section-title">近期成就</h3>
+            <div class="achievement-box">
+                <h4 class="achievement-title">開源專案貢獻</h4>
+                <p>
+                    在過去一年中，我積極參與了多個開源專案，為社群貢獻了20多個pull requests，
+                    主要專注於UI元件庫的優化與改進。
+                </p>
+            </div>
+            
+            <div class="achievement-box">
+                <h4 class="achievement-title">技術文章創作</h4>
+                <p>
+                    我在Medium上發表了12篇關於前端開發的技術文章，內容涵蓋React最佳實踐、
+                    性能優化技巧等主題，累計獲得超過5000次閱讀。
+                </p>
+            </div>
+        </div>
+        
+        <!-- 求學歷程分頁 -->
+        <div id="education" class="tab-content">
+            <h3 class="section-title">學習旅程</h3>
+            <p>
+                從小學到研究所，學習一直是我生命中重要的一部分。以下是我的求學歷程，每個階段都給了我不同的啟發與成長。
+            </p>
+            
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2001 - 2007</div>
+                        <h3 class="timeline-title">國小階段 - 啟蒙時期</h3>
+                        <p class="timeline-description">
+                            就讀於台北市立明德國小。在這個階段，我對電腦和科學展現了強烈興趣，
+                            曾參加校內科學展覽並獲得優良獎項。這段時期奠定了我對知識探索的熱情。
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2007 - 2010</div>
+                        <h3 class="timeline-title">國中階段 - 探索時期</h3>
+                        <p class="timeline-description">
+                            就讀於台北市立仁愛國中。在國中階段，我加入了電腦社團，開始學習基本的HTML和CSS，
+                            製作了第一個個人網頁。同時也參加了數學及資訊競賽，培養了邏輯思考能力。
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2010 - 2013</div>
+                        <h3 class="timeline-title">高中階段 - 定向時期</h3>
+                        <p class="timeline-description">
+                            就讀於台北市立建國高中。高中時期，我選擇理組，並深入學習程式設計。
+                            參加了資訊學科能力競賽，獲得市級佳作。也在這時期確立了未來想往資訊工程發展的方向。
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2013 - 2017</div>
+                        <h3 class="timeline-title">大學階段 - 專業時期</h3>
+                        <p class="timeline-description">
+                            就讀於國立台灣大學資訊工程學系。大學期間，我深入學習了計算機科學的各個領域，
+                            包括演算法、資料結構、網絡編程等。參與了多個專案實作，並在大三時與同學合作開發了一個校園社交平台。
+                            同時，我也擔任了程式設計課程的助教，幫助學弟妹解決程式問題。
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2017 - 2019</div>
+                        <h3 class="timeline-title">研究所階段 - 深化時期</h3>
+                        <p class="timeline-description">
+                            就讀於國立台灣大學資訊工程研究所。研究所期間，我專注於網頁技術與使用者體驗研究，
+                            論文題目為「基於使用者行為分析的自適應網頁界面設計」。在這段時間，我也參與了產學合作專案，
+                            為一家電商公司設計並實現了個性化推薦系統，大幅提升了用戶轉化率。
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2019 - 至今</div>
+                        <h3 class="timeline-title">持續學習 - 成長時期</h3>
+                        <p class="timeline-description">
+                            畢業後，我深信學習是終身的過程。我定期參加技術研討會和線上課程，掌握最新的網頁開發趨勢。
+                            同時也透過教學和分享，鞏固自己的知識基礎。每年我會為自己設定學習目標，今年的目標是深入了解WebAssembly和人工智能在前端應用中的潛力。
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="section-title">重要學習成果</h3>
+            <div class="achievement-box">
+                <h4 class="achievement-title">畢業專題 - 智能健康追蹤應用</h4>
+                <p>
+                    大學畢業專題中，我與三位同學合作開發了一款結合穿戴裝置的健康追蹤應用。
+                    我負責前端界面和資料視覺化部分，成功實現了即時數據分析和個性化健康建議功能。
+                    該專題獲得了系上最佳專題獎，並在校內成果展中受到業界專家的肯定。
+                </p>
+            </div>
+            
+            <div class="achievement-box">
+                <h4 class="achievement-title">研究所論文發表</h4>
+                <p>
+                    研究所期間，我的論文「基於使用者行為分析的自適應網頁界面設計」被國際人機互動會議（HCI International）接受並發表。
+                    這項研究提出了一種新的使用者介面自適應框架，能根據用戶的瀏覽習慣動態調整頁面元素的佈局和呈現方式，
+                    實驗結果顯示該方法能有效提升用戶體驗和任務完成效率。
+                </p>
+            </div>
+            
+            <div class="achievement-box">
+                <h4 class="achievement-title">教學經驗</h4>
+                <p>
+                    在大學四年級和研究所期間，我擔任了三個學期的「網頁程式設計」課程助教，
+                    負責設計實作作業和輔導學生解決技術問題。這段教學經驗不僅讓我更深入理解了前端開發的核心概念，
+                    也培養了我的溝通和知識傳遞能力。我編寫的教學筆記至今仍被學弟妹作為學習參考資料。
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 我的個人網站 - 版權所有</p>
+    </footer>
+    
+    <!-- 回到首頁按鈕 -->
+    <a href="index.html" class="home-button">
+        🏠
+    </a>
+    
+    <script>
+        function openTab(tabId) {
+            // 隱藏所有分頁內容
+            var tabContents = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+            
+            // 取消所有標籤的活動狀態
+            var tabs = document.getElementsByClassName("tab");
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove("active");
+            }
+            
+            // 顯示所選分頁的內容並設置標籤為活動狀態
+            document.getElementById(tabId).classList.add("active");
+            event.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>
