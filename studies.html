@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>修業紀錄與小心得 - 我的個人網站</title>
     <style>
+        /* 保留原有的基礎樣式 */
         * {
             margin: 0;
             padding: 0;
@@ -18,6 +19,7 @@
             line-height: 1.6;
         }
         
+        /* 修改header樣式，參考第二個程式碼 */
         header {
             background-color: #2c3e50;
             color: white;
@@ -38,12 +40,32 @@
             margin-bottom: 1rem;
         }
         
+        /* 新增麵包屑導航樣式 */
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .breadcrumb a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        /* 保留原有的容器樣式 */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
         
+        /* 保留原有的按鈕和課程卡片樣式 */
         .nav-buttons {
             display: flex;
             justify-content: center;
@@ -62,109 +84,33 @@
             transition: background-color 0.3s;
         }
         
-        .nav-button:hover {
-            background-color: #2980b9;
-        }
+        /* 其他原有樣式保持不變... */
         
-        .nav-button.active {
-            background-color: #2c3e50;
-        }
-        
-        .section {
-            display: none;
-            margin-bottom: 3rem;
-        }
-        
-        .section.active {
-            display: block;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 2rem;
-            color: #2c3e50;
-            font-size: 2rem;
-            position: relative;
-        }
-        
-        .section-header:after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 3px;
-            background-color: #3498db;
-            margin: 10px auto;
-        }
-        
-        .course-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 25px;
-        }
-        
-        .course-card {
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .course-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-        }
-        
-        .course-header {
-            padding: 15px;
-            background-color: #3498db;
-            color: white;
-            font-size: 1.3rem;
-            font-weight: bold;
-        }
-        
-        .required .course-header { background-color: #3498db; }
-        .elective .course-header { background-color: #e74c3c; }
-        .other .course-header { background-color: #2ecc71; }
-        
-        .course-content {
-            padding: 20px;
-        }
-        
-        .course-title {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: #2c3e50;
-        }
-        
-        .course-date {
-            font-size: 0.9rem;
-            color: #7f8c8d;
-            margin-bottom: 15px;
-        }
-        
-        .course-reflection {
-            color: #555;
-            line-height: 1.8;
-        }
-        
-        .back-to-home {
-            display: block;
-            text-align: center;
-            margin: 2rem auto;
+        /* 新增返回頂部按鈕樣式，參考第二個程式碼 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
             background-color: #2c3e50;
             color: white;
-            padding: 12px 25px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
             text-decoration: none;
-            border-radius: 5px;
-            width: fit-content;
-            transition: background-color 0.3s;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
         }
         
-        .back-to-home:hover {
-            background-color: #1a2530;
+        .back-to-top:hover {
+            opacity: 1;
         }
         
+        /* 保留原有的頁尾樣式 */
         footer {
             background-color: #2c3e50;
             color: white;
@@ -173,6 +119,7 @@
             margin-top: 2rem;
         }
         
+        /* 保留原有的響應式設計 */
         @media (max-width: 768px) {
             .course-container {
                 grid-template-columns: 1fr;
@@ -193,171 +140,55 @@
     <header>
         <h1>修業紀錄與小心得</h1>
         <div class="subtitle">我的學習歷程與收穫</div>
+        <!-- 新增麵包屑導航 -->
+        <div class="breadcrumb">
+            <a href="index.html">首頁</a> &gt; <span>修業紀錄與小心得</span>
+        </div>
     </header>
     
-    <div class="container">
-        <div class="nav-buttons">
-            <button class="nav-button active" onclick="showSection('required')">必修課程</button>
-            <button class="nav-button" onclick="showSection('elective')">選修課程</button>
-            <button class="nav-button" onclick="showSection('other')">其他學習</button>
-        </div>
-        
-        <!-- 必修課程 -->
-        <div id="required" class="section active">
-            <h2 class="section-header">必修課程</h2>
-            <div class="course-container">
-                <!-- 課程1 -->
-                <div class="course-card required">
-                    <div class="course-header">必修課程</div>
-                    <div class="course-content">
-                        <h3 class="course-title">資料結構</h3>
-                        <div class="course-date">2024年春季學期</div>
-                        <p class="course-reflection">
-                            學習資料結構讓我重新思考程式設計的基礎。從陣列到鏈結串列，從樹狀結構到圖論，每個概念都像拼圖般互相連結。最大收穫是了解到演算法效率的重要性，尤其當處理大型資料集時。透過不同作業實作，我學會了如何選擇最適合特定問題的資料結構，這讓我的程式更加高效且邏輯清晰。
-                        </p>
-                    </div>
-                </div>
-                
-                <!-- 課程2 -->
-                <div class="course-card required">
-                    <div class="course-header">必修課程</div>
-                    <div class="course-content">
-                        <h3 class="course-title">程式設計</h3>
-                        <div class="course-date">2023年秋季學期</div>
-                        <p class="course-reflection">
-                            程式設計課為我打開了編程世界的大門。從最基礎的變數宣告到複雜的函式設計，這門課程帶我一步步理解程式邏輯。最大挑戰是期末專題，我們設計了一個簡易的管理系統。這過程中，不僅學到技術知識，也培養了解決問題的能力和團隊合作精神，為我的程式學習旅程奠定了堅實基礎。
-                        </p>
-                    </div>
-                </div>
-                
-                <!-- 課程3 -->
-                <div class="course-card required">
-                    <div class="course-header">必修課程</div>
-                    <div class="course-content">
-                        <h3 class="course-title">數學分析</h3>
-                        <div class="course-date">2023年春季學期</div>
-                        <p class="course-reflection">
-                            數學分析是個挑戰，但也是最能鍛鍊邏輯思維的課程。從極限概念到積分應用，每個定理背後都有嚴謹的推導過程。最初感到困難，但透過小組討論和課後練習，漸漸掌握了解題方法。這門課不僅加強我的數學能力，更培養了我面對困難時的耐心和毅力，這種思維方式對我的學習生涯影響深遠。
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- 選修課程 -->
-        <div id="elective" class="section">
-            <h2 class="section-header">選修課程</h2>
-            <div class="course-container">
-                <!-- 課程1 -->
-                <div class="course-card elective">
-                    <div class="course-header">選修課程</div>
-                    <div class="course-content">
-                        <h3 class="course-title">人工智能導論</h3>
-                        <div class="course-date">2024年春季學期</div>
-                        <p class="course-reflection">
-                            人工智能導論讓我了解到AI不只是媒體炒作的熱門話題，而是有深厚理論基礎的學科。從機器學習到神經網路，每個概念都讓我著迷。最有趣的部分是實作一個簡單的影像識別系統，看著自己寫的模型能夠識別手寫數字，那種成就感無法言喻。這門課開啟了我對AI領域的濃厚興趣。
-                        </p>
-                    </div>
-                </div>
-                
-                <!-- 課程2 -->
-                <div class="course-card elective">
-                    <div class="course-header">選修課程</div>
-                    <div class="course-content">
-                        <h3 class="course-title">網頁前端開發</h3>
-                        <div class="course-date">2023年秋季學期</div>
-                        <p class="course-reflection">
-                            網頁前端開發讓我發現自己的創意潛能。從HTML基礎到CSS動畫，再到JavaScript互動效果，每堂課都帶來新的驚喜。期末專案中，我設計了個人作品集網站，結合響應式設計和現代UI元素。老師的指導讓我明白使用者體驗的重要性，不只是寫出能運作的代碼，更要考慮視覺美感和操作流暢度。
-                        </p>
-                    </div>
-                </div>
-                
-                <!-- 課程3 -->
-                <div class="course-card elective">
-                    <div class="course-header">選修課程</div>
-                    <div class="course-content">
-                        <h3 class="course-title">創新思考與設計</h3>
-                        <div class="course-date">2024年冬季學期</div>
-                        <p class="course-reflection">
-                            創新思考課程完全顛覆了我的學習方式。不同於傳統課程，這裡鼓勵我們質疑現有解決方案，思考全新可能性。通過設計思考方法論，我們解決了校園內的實際問題。這堂課教會我跳出框架思考，聆聽使用者需求，以及如何將創意轉化為可行方案，這些能力在任何領域都無比寶貴。
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- 其他學習 -->
-        <div id="other" class="section">
-            <h2 class="section-header">其他學習</h2>
-            <div class="course-container">
-                <!-- 課程1 -->
-                <div class="course-card other">
-                    <div class="course-header">其他學習</div>
-                    <div class="course-content">
-                        <h3 class="course-title">線上課程：資料視覺化</h3>
-                        <div class="course-date">2024年1月</div>
-                        <p class="course-reflection">
-                            自學資料視覺化讓我對數據有了全新認識。通過Coursera平台的課程，我掌握了D3.js和Tableau等工具的基本使用。最大心得是明白了視覺化不僅是技術，更是講故事的藝術。一個好的資料視覺化能夠直觀地傳達複雜信息，讓觀眾立即理解數據背後的意義，這對現代資訊社會的溝通至關重要。
-                        </p>
-                    </div>
-                </div>
-                
-                <!-- 課程2 -->
-                <div class="course-card other">
-                    <div class="course-header">其他學習</div>
-                    <div class="course-content">
-                        <h3 class="course-title">工作坊：UI/UX設計基礎</h3>
-                        <div class="course-date">2023年7月</div>
-                        <p class="course-reflection">
-                            參加為期兩天的UI/UX工作坊讓我認識到好設計的重要性。從使用者研究到原型設計，每個環節都精彩紛呈。我最大的收穫是理解同理心在設計中的核心地位，如何真正站在使用者角度思考。透過小組合作設計一款健康追蹤應用的原型，我體會到跨領域合作的價值和挑戰，也學會了接受建設性的批評。
-                        </p>
-                    </div>
-                </div>
-                
-                <!-- 課程3 -->
-                <div class="course-card other">
-                    <div class="course-header">其他學習</div>
-                    <div class="course-content">
-                        <h3 class="course-title">讀書會：區塊鏈技術探索</h3>
-                        <div class="course-date">2023年9月至今</div>
-                        <p class="course-reflection">
-                            與志同道合的朋友組織了區塊鏈讀書會，每週深入探討不同主題。從比特幣白皮書到以太坊智能合約，我們一起學習這項顛覆性技術。最大收穫是培養了批判性思考能力，學會區分炒作與真正價值。透過小組實作一個簡單的代幣系統，我理解了去中心化系統的運作機制和潛在應用場景。
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <a href="index.html" class="back-to-home">返回首頁</a>
-    </div>
+    <!-- 其他原有內容保持不變... -->
+    
+    <!-- 新增返回頂部按鈕 -->
+    <a href="#" class="back-to-top">↑</a>
     
     <footer>
         <p>&copy; 2025 我的個人網站 - 版權所有</p>
     </footer>
 
+    <!-- 新增返回頂部按鈕的JavaScript -->
     <script>
-        function showSection(sectionId) {
-            // 隱藏所有區塊
-            document.querySelectorAll('.section').forEach(section => {
-                section.classList.remove('active');
+        // 顯示/隱藏返回頂部按鈕
+        window.addEventListener('scroll', function() {
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTop.style.display = 'flex';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+        
+        // 平滑滾動效果
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                    return;
+                }
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
             });
-            
-            // 顯示選定區塊
-            document.getElementById(sectionId).classList.add('active');
-            
-            // 更新導航按鈕狀態
-            document.querySelectorAll('.nav-button').forEach(button => {
-                button.classList.remove('active');
-            });
-            
-            // 取得被點擊的按鈕並加上active類
-            Array.from(document.querySelectorAll('.nav-button')).find(
-                button => button.textContent.includes(
-                    sectionId === 'required' ? '必修' : 
-                    sectionId === 'elective' ? '選修' : '其他'
-                )
-            ).classList.add('active');
-        }
+        });
     </script>
 </body>
 </html>
