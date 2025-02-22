@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的作品 - 個人網站</title>
+    <title>人生規劃 - 我的個人網站</title>
     <style>
         * {
             margin: 0;
@@ -56,103 +56,79 @@
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 0 20px;
         }
         
-        .project-section {
-            margin-bottom: 5rem;
+        .timeline {
+            position: relative;
+            margin: 50px 0;
         }
         
-        .section-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            border-bottom: 3px solid #2c3e50;
-            padding-bottom: 0.5rem;
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background-color: #9b59b6;
         }
         
-        .section-icon {
-            font-size: 2rem;
-            margin-right: 1rem;
-        }
-        
-        .section-title {
-            font-size: 1.8rem;
-            color: #2c3e50;
-        }
-        
-        .project-card {
-            background-color: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            margin-bottom: 2rem;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-        }
-        
-        .project-image {
+        .timeline-item {
+            margin-bottom: 50px;
+            position: relative;
             width: 100%;
-            height: 300px;
-            object-fit: cover;
-            border-bottom: 1px solid #eee;
         }
         
-        .project-content {
-            padding: 2rem;
+        .timeline-content {
+            position: relative;
+            width: calc(50% - 30px);
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         
-        .project-title {
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #9b59b6;
+            border-radius: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 20px;
+        }
+        
+        .timeline-title {
             font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #2c3e50;
+            color: #9b59b6;
+            margin-bottom: 15px;
         }
         
-        .project-description {
-            margin-bottom: 1.5rem;
-            color: #555;
-            line-height: 1.7;
+        .timeline-subtitle {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 10px;
         }
         
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
+        .timeline-goals {
+            margin-top: 15px;
         }
         
-        .tech-tag {
-            background-color: #e7f5ff;
-            color: #3498db;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-        }
-        
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
-        
-        .project-link {
-            display: inline-block;
-            padding: 0.7rem 1.5rem;
-            background-color: #2c3e50;
-            color: white;
-            text-decoration: none;
+        .goal-item {
+            background: #f8f9fa;
+            padding: 10px 15px;
+            margin-bottom: 10px;
             border-radius: 5px;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
-        
-        .project-link:hover {
-            background-color: #1a2530;
+            border-left: 3px solid #9b59b6;
         }
         
         .back-to-top {
@@ -186,192 +162,89 @@
             margin-top: 2rem;
         }
         
-        /* 響應式設計 */
         @media (max-width: 768px) {
-            .project-image {
-                height: 200px;
+            .timeline::before {
+                left: 30px;
             }
             
-            .project-content {
-                padding: 1.5rem;
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
             }
             
-            .project-title {
-                font-size: 1.3rem;
-            }
-            
-            .section-title {
-                font-size: 1.5rem;
+            .timeline-item::before {
+                left: 30px;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>我的作品</h1>
-        <div class="subtitle">展示我的創作和專案</div>
+        <h1>人生規劃</h1>
+        <div class="subtitle">給未來的自己一個期許</div>
         <div class="breadcrumb">
-            <a href="index.html">首頁</a> &gt; <span>我的作品</span>
+            <a href="index.html">首頁</a> &gt; <span>人生規劃</span>
         </div>
     </header>
     
     <div class="container">
-        <!-- 俄羅斯方塊 -->
-        <section class="project-section" id="tetris">
-            <div class="section-header">
-                <div class="section-icon">🎮</div>
-                <h2 class="section-title">俄羅斯方塊</h2>
-            </div>
-            
-            <div class="project-card">
-                <img src="/api/placeholder/800/400" alt="俄羅斯方塊遊戲截圖" class="project-image">
-                <div class="project-content">
-                    <h3 class="project-title">HTML5 俄羅斯方塊遊戲</h3>
-                    <div class="tech-tags">
-                        <span class="tech-tag">HTML5</span>
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">Canvas</span>
-                        <span class="tech-tag">CSS3</span>
-                    </div>
-                    <p class="project-description">
-                        這是我用純JavaScript和HTML5 Canvas技術開發的俄羅斯方塊遊戲。實現了經典的遊戲玩法，包括方塊旋轉、快速下落、消行計分等功能。遊戲界面採用了響應式設計，可以在桌面和移動設備上流暢運行。特別加入了自定義主題和音效，提升遊戲體驗。
-                    </p>
-                    <p class="project-description">
-                        開發這個項目讓我深入理解了Canvas繪圖、遊戲循環和碰撞檢測等遊戲開發核心概念。後續更新計劃加入多人對戰模式和更多的視覺效果。
-                    </p>
-                    <div class="project-links">
-                        <a href="#" class="project-link">查看演示</a>
-                        <a href="#" class="project-link">GitHub源碼</a>
+        <div class="timeline">
+            <!-- 大二 -->
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h2 class="timeline-title">大學二年級</h2>
+                    <div class="timeline-subtitle">奠定基礎的重要階段</div>
+                    <div class="timeline-goals">
+                        <div class="goal-item">專注課業，維持平均GPA 3.5以上</div>
+                        <div class="goal-item">參與程式設計相關社團，培養實作能力</div>
+                        <div class="goal-item">開始接觸業界實習機會，為寒暑假實習做準備</div>
+                        <div class="goal-item">學習一個前端框架（React/Vue）並完成小專案</div>
                     </div>
                 </div>
             </div>
-        </section>
-        
-        <!-- 快打旋風遊戲工具 -->
-        <section class="project-section" id="streetfighter">
-            <div class="section-header">
-                <div class="section-icon">⚔️</div>
-                <h2 class="section-title">快打旋風遊戲工具</h2>
-            </div>
             
-            <div class="project-card">
-                <img src="/api/placeholder/800/400" alt="快打旋風工具截圖" class="project-image">
-                <div class="project-content">
-                    <h3 class="project-title">快打旋風戰鬥數據分析器</h3>
-                    <div class="tech-tags">
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">Express</span>
-                        <span class="tech-tag">MongoDB</span>
-                    </div>
-                    <p class="project-description">
-                        這個工具為快打旋風遊戲玩家設計，能夠記錄和分析戰鬥數據，幫助玩家提升技術。主要功能包括招式幀數查詢、角色匹配分析、對戰錄像管理和技巧組合推薦。系統採用React構建前端界面，Node.js和Express作為後端API，MongoDB存儲用戶和遊戲數據。
-                    </p>
-                    <p class="project-description">
-                        開發過程中最大的挑戰是實現幀精確的招式判定系統，透過視頻處理技術和機器學習算法，成功實現了高達95%的準確率。這個工具已被當地電競社區採用，並獲得了積極反饋。
-                    </p>
-                    <div class="project-links">
-                        <a href="#" class="project-link">在線工具</a>
-                        <a href="#" class="project-link">技術說明</a>
+            <!-- 大三 -->
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h2 class="timeline-title">大學三年級</h2>
+                    <div class="timeline-subtitle">深化專業與實務經驗</div>
+                    <div class="timeline-goals">
+                        <div class="goal-item">爭取暑期實習機會，累積實務經驗</div>
+                        <div class="goal-item">準備並考取相關專業證照（如：AWS、Azure認證）</div>
+                        <div class="goal-item">參與跨校/系專案競賽，擴展人脈網絡</div>
+                        <div class="goal-item">開始規劃畢業專題，尋找合適的題目和團隊</div>
                     </div>
                 </div>
             </div>
-        </section>
-        
-        <!-- 機器學習 -->
-        <section class="project-section" id="machinelearning">
-            <div class="section-header">
-                <div class="section-icon">🤖</div>
-                <h2 class="section-title">機器學習</h2>
-            </div>
             
-            <div class="project-card">
-                <img src="/api/placeholder/800/400" alt="機器學習專案視覺化" class="project-image">
-                <div class="project-content">
-                    <h3 class="project-title">台灣房價預測模型</h3>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">TensorFlow</span>
-                        <span class="tech-tag">Pandas</span>
-                        <span class="tech-tag">Scikit-learn</span>
-                        <span class="tech-tag">Matplotlib</span>
-                    </div>
-                    <p class="project-description">
-                        基於十年台灣房價數據開發的預測模型，結合了線性回歸、隨機森林和深度學習網絡的集成模型。考量了超過20個影響房價的因素，包括地理位置、交通便利性、學區資源等。模型在測試集上達到了87%的準確率，可以為購房者和投資者提供較為精確的價格參考。
-                    </p>
-                    <p class="project-description">
-                        項目採用了Python生態系統的主要數據科學工具，從數據清洗、特徵工程到模型訓練和評估，完整展示了機器學習應用於實際問題的流程。代碼公開在GitHub上，並提供了詳細的技術報告和互動式視覺化界面。
-                    </p>
-                    <div class="project-links">
-                        <a href="#" class="project-link">研究報告</a>
-                        <a href="#" class="project-link">演示系統</a>
+            <!-- 大四 -->
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h2 class="timeline-title">大學四年級</h2>
+                    <div class="timeline-subtitle">為未來做準備</div>
+                    <div class="timeline-goals">
+                        <div class="goal-item">完成具有創新性的畢業專題</div>
+                        <div class="goal-item">投遞實習/正職履歷，參與企業面試</div>
+                        <div class="goal-item">評估研究所/出國深造的可能性</div>
+                        <div class="goal-item">建立個人作品集網站，展示專業能力</div>
                     </div>
                 </div>
             </div>
-        </section>
-        
-        <!-- Discord機器人 -->
-        <section class="project-section" id="discordbot">
-            <div class="section-header">
-                <div class="section-icon">🤖</div>
-                <h2 class="section-title">Discord機器人</h2>
-            </div>
             
-            <div class="project-card">
-                <img src="/api/placeholder/800/400" alt="Discord機器人介面" class="project-image">
-                <div class="project-content">
-                    <h3 class="project-title">多功能學習助手機器人</h3>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Discord.py</span>
-                        <span class="tech-tag">SQLite</span>
-                        <span class="tech-tag">OpenAI API</span>
-                    </div>
-                    <p class="project-description">
-                        為課堂和學習社群設計的Discord機器人，整合了多種學習輔助功能。主要特點包括自動組織學習小組、提醒作業截止日期、答疑系統、學習資源推薦和積分獎勵機制。機器人使用Discord.py框架開發，後端數據存儲使用SQLite，並整合了OpenAI API提供智能回答功能。
-                    </p>
-                    <p class="project-description">
-                        這個機器人已經在我們學校的5個不同Discord社群中使用，服務超過300名學生。從用戶反饋來看，作業提醒功能和智能問答系統特別受歡迎，幫助提高了學習效率和社群活躍度。
-                    </p>
-                    <div class="project-links">
-                        <a href="#" class="project-link">機器人邀請</a>
-                        <a href="#" class="project-link">使用指南</a>
+            <!-- 畢業後 -->
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h2 class="timeline-title">畢業後規劃</h2>
+                    <div class="timeline-subtitle">展開人生新階段</div>
+                    <div class="timeline-goals">
+                        <div class="goal-item">順利進入理想的科技公司，擔任軟體工程師</div>
+                        <div class="goal-item">持續學習新技術，每季至少掌握一個新技能</div>
+                        <div class="goal-item">參與開源社群，回饋技術社群</div>
+                        <div class="goal-item">五年內晉升為資深工程師，帶領專案開發</div>
                     </div>
                 </div>
             </div>
-        </section>
-        
-        <!-- 系展網頁 -->
-        <section class="project-section" id="exhibition">
-            <div class="section-header">
-                <div class="section-icon">🌐</div>
-                <h2 class="section-title">系展網頁</h2>
-            </div>
-            
-            <div class="project-card">
-                <img src="/api/placeholder/800/400" alt="系展網頁截圖" class="project-image">
-                <div class="project-content">
-                    <h3 class="project-title">2025年資訊工程系畢業成果展</h3>
-                    <div class="tech-tags">
-                        <span class="tech-tag">HTML5</span>
-                        <span class="tech-tag">CSS3</span>
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">Three.js</span>
-                        <span class="tech-tag">GSAP</span>
-                    </div>
-                    <p class="project-description">
-                        為資訊工程系2025年畢業展設計的官方網站，展示了40多個學生專題成果。網站採用了現代化的設計風格，融合了3D互動元素和流暢的動畫效果。訪客可以透過虛擬展廳瀏覽各個專題，並有詳細的專題說明和演示視頻。
-                    </p>
-                    <p class="project-description">
-                        這個項目是由我主導開發的小組作品，我負責整體設計、前端框架搭建和3D互動元素的實現。網站成功服務了超過1500名線上訪客，得到了學院師生和業界參觀者的一致好評，也被學校收錄為優秀學生作品範例。
-                    </p>
-                    <div class="project-links">
-                        <a href="#" class="project-link">訪問網站</a>
-                        <a href="#" class="project-link">幕後製作</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+        </div>
     </div>
     
     <a href="#" class="back-to-top">↑</a>
