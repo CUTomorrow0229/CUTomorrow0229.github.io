@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人生規劃 - 我的個人網站</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft JhengHei', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-bottom: 3rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .timeline {
+            position: relative;
+            margin: 50px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background-color: #9b59b6;
+        }
+        
+        .timeline-item {
+            margin-bottom: 50px;
+            position: relative;
+            width: 100%;
+        }
+        
+        .timeline-content {
+            position: relative;
+            width: calc(50% - 30px);
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #9b59b6;
+            border-radius: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 20px;
+        }
+        
+        .timeline-title {
+            font-size: 1.5rem;
+            color: #9b59b6;
+            margin-bottom: 15px;
+        }
+        
+        .timeline-subtitle {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-goals {
+            margin-top: 15px;
+        }
+        
+        .goal-item {
+            background: #f8f9fa;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border-left: 3px solid #9b59b6;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
+            }
+            
+            .timeline-item::before {
+                left: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>人生規劃</h1>
+        <div class="subtitle">給未來的自己一個期許</div>
+    </header>
+    
+    <div class="container">
+        <div class="timeline">
+            <!-- 大二 -->
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h2 class="timeline-title">大學二年級</h2>
+                    <div class="timeline-subtitle">奠定基礎的重要階段</div>
+                    <div class="timeline-goals">
+                        <div class="goal-item">專注課業，維持平均GPA 3.5以上</div>
+                        <div class="goal-item">參與程式設計相關社團，培養實作能力</div>
+                        <div class="goal-item">開始接觸業界實習機會，為寒暑假實習做準備</div>
+                        <div class="goal-item">學習一個前端框架（React/Vue）並完成小專案</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 大三 -->
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h2 class="timeline-title">大學三年級</h2>
+                    <div class="timeline-subtitle">深化專業與實務經驗</div>
+                    <div class="timeline-goals">
+                        <div class="goal-item">爭取暑期實習機會，累積實務經驗</div>
+                        <div class="goal-item">準備並考取相關專業證照（如：AWS、Azure認證）</div>
+                        <div class="goal-item">參與跨校/系專案競賽，擴展人脈網絡</div>
+                        <div class="goal-item">開始規劃畢業專題，尋找合適的題目和團隊</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 大四 -->
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h2 class="timeline-title">大學四年級</h2>
+                    <div class="timeline-subtitle">為未來做準備</div>
+                    <div class="timeline-goals">
+                        <div class="goal-item">完成具有創新性的畢業專題</div>
+                        <div class="goal-item">投遞實習/正職履歷，參與企業面試</div>
+                        <div class="goal-item">評估研究所/出國深造的可能性</div>
+                        <div class="goal-item">建立個人作品集網站，展示專業能力</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 畢業後 -->
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h2 class="timeline-title">畢業後規劃</h2>
+                    <div class="timeline-subtitle">展開人生新階段</div>
+                    <div class="timeline-goals">
+                        <div class="goal-item">順利進入理想的科技公司，擔任軟體工程師</div>
+                        <div class="goal-item">持續學習新技術，每季至少掌握一個新技能</div>
+                        <div class="goal-item">參與開源社群，回饋技術社群</div>
+                        <div class="goal-item">五年內晉升為資深工程師，帶領專案開發</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 我的個人網站 - 版權所有</p>
+    </footer>
+</body>
+</html>
